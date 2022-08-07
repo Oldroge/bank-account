@@ -1,17 +1,3 @@
-public class ContaPoupança {
-    private int agencia;
-    private int numero;
-    private double saldo;
+public class ContaPoupança extends Conta implements IConta {
 
-    public void sacar() {
-
-    }
-
-    public void depositar() {
-
-    }
-
-    public void transferir() {
-
-    }
 }
