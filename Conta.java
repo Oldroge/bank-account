@@ -4,6 +4,7 @@ public abstract class Conta implements IConta {
     protected int agencia;
     protected int numero;
     protected double saldo;
+    protected Cliente cliente;
 
     public Conta() {
         this.agencia = Conta.AGENCIA_PADRAO;
@@ -25,16 +26,26 @@ public abstract class Conta implements IConta {
 
     @Override
     public void sacar(double valor) {
+        this.saldo -= valor;
 
     }
 
     @Override
     public void depositar(double valor) {
+        this.saldo += valor;
 
     }
 
     @Override
     public void transferir(double valor, Conta contaDestino) {
+        this.sacar(valor);
+        contaDestino.depositar(valor);
+    }
 
+    protected void imprimirInfosComuns() {
+        System.out.println(String.format("Titular: %s", this.cliente.getNome()));
+        System.out.println(String.format("Agencia: %d", this.agencia));
+        System.out.println(String.format("Conta: %d", this.numero));
+        System.out.println(String.format("Conta: %.2f", this.saldo));
     }
 }
